@@ -9,11 +9,23 @@
 <body>
     <header>
         <div class="header-title">
-            <img src="C:\Users\hided\Downloads\SMEAG.icon.png" alt="" class="icon">
-            <h1>CAFE</h1>
+            <div class="title-icon">
+                <a href=""><img src="photos/smeag-logo-horaizon.png" alt=""></a>
+            </div>
+            <div class="menu-bar">
+                <ol>
+                    <li><a href="">ホットドリンク</a></li>
+                    <li><a href="">アイスドリンク</a></li>
+                    <li><a href="">デザート</a></li>
+                    <li><a href="">スナック</a></li>
+                    <li><a href="">文房具</a></li>
+                    <li><a href="">その他</a></li>
+                </ol>
+            </div>
         </div>
 
         <div class="hamburger">
+            <div class="hbg-menu-background"></div>
             <div class="hbg-menu" id="hbgMenu">
                 <span></span>
                 <span></span>
@@ -23,36 +35,107 @@
             <div class="hbg-contents" id="hbgContents">
                 <div class="hbgmenu-background" id="hgmenuBackground"></div>
                 <ul>
-                    <li class="coffee-btn" id="contentBtn">
-                        <span><</span>
-                        <span>coffee</span>
-                    </li>
-                    <li class="snacks-btn" id="contentBtn">
-                        <span><</span>
-                        <span>snacks</span>
-                    </li>
-                    <li class="groceiry-btn" id="contentBtn">
-                        <span><</span>
-                        <span>groceiry</span>
-                    </li>
+                    <li><a href="">
+                        <div class="menu-text">
+                            <span class="jp">ホットドリンク</span>
+                            <span class="en">HOT DRINKS</span>
+                        </div>
+                        <div class="arrow">
+                            <span>&gt;</span>
+                        </div>
+                    </a></li>
+                    <li><a href="">
+                        <div class="menu-text">
+                            <span class="jp">アイスドリンク</span>
+                            <span class="en">ICE DRINKS</span>
+                        </div>
+                        <div class="arrow">
+                            <span>&gt;</span>
+                        </div>
+                    </a></li>
+                    <li><a href="">
+                        <div class="menu-text">
+                            <span class="jp">デザート</span>
+                            <span class="en">DESSERTS</span>
+                        </div>
+                        <div class="arrow">
+                            <span>&gt;</span>
+                        </div>
+                    </a></li>
+                    <li><a href="">
+                        <div class="menu-text">
+                            <span class="jp">スナック</span>
+                            <span class="en">SNACKS</span>
+                        </div>
+                        <div class="arrow">
+                            <span>></span>
+                        </div>
+                    </a></li>
+                    <li><a href="">
+                        <div class="menu-text">
+                            <span class="jp">文房具</span>
+                            <span class="en">STATIONERY</span>
+                        </div>
+                        <div class="arrow">
+                            <span>></span>
+                        </div>
+                    </a></li>
+                    <li><a href="">
+                        <div class="menu-text">
+                            <span class="jp">その他</span>
+                            <span class="en">OTHERS</span>
+                        </div>    
+                        <div class="arrow">
+                            <span>></span>
+                        </div>
+                    </a></li>
                 </ul>
             </div>
         </div>
     </header>
 
-    <main>
-        <div class="icons">
-            <div class="icon coffee-iconHorizon">
-                <img src="C:\Users\hided\OneDrive\画像\Screenshots\スクリーンショット 2026-01-07 102044.png" alt="">
+    <main class="main">
+        <div class="slideshow">
+            <div class="slide active">
+                <img src="photos/sutanmiH1.jpg" alt="Coffee 1">
             </div>
-            <div class="icon coffee-iconVertical">
-                <img src="C:\Users\hided\OneDrive\デスクトップ\スタンミさん用webページ作成\images\sutanmiH4.jpg" alt="">
+            <div class="slide">
+                <img src="photos/sutanmiH2.jpg" alt="Coffee 2">
             </div>
-            <div class="icon snacks-icon">
-                <img src="C:\Users\hided\OneDrive\画像\Screenshots\スクリーンショット 2026-01-07 104433.png" alt="">
+            <div class="slide">
+                <img src="photos/sutanmiH3.jpg" alt="Coffee 3">
             </div>
-            <div class="icon groceiries-icon">
-                <img src="C:\Users\hided\OneDrive\デスクトップ\スタンミさん用webページ作成\images\sutanmiV1.jpg" alt="">
+            <div class="slide">
+                <img src="photos/sutanmiH5.jpg" alt="Coffee 4">
+            </div>
+        </div>
+        
+        <p>メニュー</p>
+
+        <div class="menu-icons">
+            <a class="icon coffee-iconHorizon">
+                <img src="photos/sutanmiH1.jpg" alt="">
+                <span>ホットドリンク</span>
+            </a> 
+            <a class="icon snacks-icon">
+                <img src="photos/sutanmiH2.jpg" alt="">
+                <span>アイスドリンク</span>
+            </a> 
+            <a class="icon bevarages-icon">
+                <img src="photos/sutanmiH3.jpg" alt="">
+                <span>デザート</span>
+            </a> 
+            <a class="icon snacks-icon">
+                <img src="photos/sutanmiH5.jpg" alt="">
+                <span>スナック</span>
+            </a> 
+            <a class="icon snacks-icon">
+                <img src="photos/sutanmiH5.jpg" alt="">
+                <span>文房具</span>
+            </a> 
+            <a class="icon snacks-icon">
+                <img src="photos/sutanmiH5.jpg" alt="">
+                <span>生活雑貨</span>
             </div>
         </div>
     </main>
@@ -60,10 +143,10 @@
     <footer>
         <div class="nav">
             <ol class="icons">
-                <li class="icon smeag-icon"><a href="https://smeag.jp/"><img src="C:\Users\hided\Downloads\SMEAG.icon.png" alt="smeagoffcial"></a></li>
-                <li class="icon instagram-icon"><a href="https://www.instagram.com/smeag_global_education"><img src="C:\Users\hided\Downloads\Instagram.icon.mono.png" alt="instagram"></a></li>
-                <li class="icon twitter-icon"><a href=""><img src="C:\Users\hided\Downloads\x.icon.mono.png" alt=""></a></li>
-                <li class="icon youtube-icon"><a href="https://www.youtube.com/@SMEAGGlobalEducation/videos"><img src="C:\Users\hided\Downloads\youtube.icon.mono.png" alt=""></a></li>
+                <li class="icon smeag-icon"><a href="https://smeag.jp/"><img src="photos/SMEAG.icon.png" alt="smeagoffcial"></a></li>
+                <li class="icon instagram-icon"><a href="https://www.instagram.com/smeag_global_education"><img src="photos/Instagram.icon.mono.png" alt="instagram"></a></li>
+                <li class="icon twitter-icon"><a href=""><img src="photos/x.icon.mono.png" alt=""></a></li>
+                <li class="icon youtube-icon"><a href="https://www.youtube.com/@SMEAGGlobalEducation/videos"><img src="photos/youtube.icon.mono.png" alt=""></a></li>
             </ol>
         </div>
     </footer>
