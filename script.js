@@ -39,3 +39,19 @@ function changeSlide() {
     slides[currentSlide].classList.add('active');
 }
 setInterval(changeSlide, 4000)
+
+//loading-screen
+window.addEventListener("load", function() {
+    const loadingScreen = document.getElementById("loadingScreen");
+    const hiddenContent = document.getElementById("hiddenContent");
+
+    hiddenContent.classList.remove("hidden");
+
+    this.setTimeout(function() {
+        loadingScreen.classList.add("loaded");
+
+        setTimeout(function() {
+            loadingScreen.style.display = "none"
+        },2500);
+    },1500);
+});

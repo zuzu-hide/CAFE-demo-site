@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../style.css">
     <title>HOTDRINKS</title>
 </head>
-<body>
+<body class="hotdrinks">
     <header>
         <div class="header-title">
             <div class="title-icon">
@@ -25,7 +25,7 @@
 
             <div class="hbg-contents" id="hbgContents">
                 <ul>
-                    <li><a href="index.html">
+                    <li><a href="../index.html">
                         <div class="menu-text">
                             <span class="jp">ホーム</span>
                             <span class="en">HOME</span>
@@ -96,6 +96,18 @@
     <div class="hbg-display" id="hbgDisplay"></div>
 
     <main class="main">
+
+        <div class="submenu-nav">
+            <ul>
+                <li class="home-link"><a href="../index.html">ホーム</a></li>
+                <li class="current-link"><a href="" class="current">ホットドリンク</a></li>
+                <li><a href="" >アイスドリンク</a></li>
+                <li><a href="" >デザート</a></li>
+                <li><a href="" >スナック</a></li>
+                <li><a href="" >文房具</a></li>
+                <li><a href="" >その他</a></li>
+            </ul>
+        </div>
 
         <div class="sub-title">
             <p>ホットドリンク</p>
@@ -183,7 +195,10 @@
 
         </div>
         <div class="nav-main">
-
+            <a href="../index.html">
+                <span>メニューTOP</span>
+                <span>&gt;</span>
+            </a>
         </div>
         <div class="nav">
             <ol class="icons">
@@ -194,6 +209,12 @@
             </ol>
         </div>
     </footer>
+
+    <div class="loading-screen" id="loadingScreen">
+        <div class="spinner"></div>
+    </div>
+    <div class="hidden" id="hiddenContent"></div>
+
     <script src="../script.js"></script>
 </body>
 </html>
