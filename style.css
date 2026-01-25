@@ -48,9 +48,14 @@ header {
         list-style: none;
         width: 100%;
         padding: 15px 5px;
+        border: solid 0.5px white;
         background-color: rgb(62, 48, 5);
     }
     .hbg-contents li:hover {
+
+        background-color: rgb(143, 113, 56);
+    }
+    .hbg-contents .current-link {
         background-color: rgb(143, 113, 56);;
     }
     .hbg-contents a {
@@ -185,6 +190,8 @@ header {
     opacity: 1;
     visibility: visible;
 }
+
+
 /*slideshow*/
 .slideshow {
     position: relative;
