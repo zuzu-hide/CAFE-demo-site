@@ -12,10 +12,10 @@ body {
 }
 :root {
   --z-base: 1;
-  --z-overlay: 500;
-  --z-header: 1000;
-  --z-menu: 2000;
-  --z-load: 3000;
+  --z-overlay: 10;
+  --z-header: 20;
+  --z-menu: 30;
+  --z-load: 40;
 }
 
 /*header*/
@@ -28,7 +28,7 @@ header {
     justify-content: center;
     cursor: pointer;
     background-color: rgb(255, 255, 255);
-    margin-bottom: 10px;
+    padding: 10px;
 }
 .menu-bar {
     display: none;
@@ -83,8 +83,8 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        top: 20px;
-        right: 10px;
+        top: 33px;
+        right: 19px;
         width: 30px;
         height: 20px;
         cursor: pointer;
@@ -108,8 +108,8 @@ header {
     }
     .hbg-menu-background {
         position: absolute;
-        top: 8px;
-        right: 3px;
+        top: 20px;
+        right: 11.5px;
         width: 45px;
         height: 45px;
         background-color: antiquewhite;
@@ -118,9 +118,9 @@ header {
     }
     .hbg-contents {
         position:absolute;
-        top: 70px;
+        top: 90px;
         left: 0;
-        height: 0;
+        height: calc(100svh - 90px);
         width: 100vw;
 
         opacity: 0;
@@ -178,7 +178,7 @@ header {
     width: 100vw;
     background-color: rgb(0, 0, 0, 0.4);
     visibility: hidden;
-    z-index: var(--z-overlay);
+    z-index: 2;
     transition: all 0.3 ease-in-out;
 }
 .hbg-display.open {
@@ -215,6 +215,7 @@ header {
     object-fit: cover;
     filter: brightness(0.8);
 }
+
 /*main*/
 .main {
     z-index: var(--z-base);
@@ -279,12 +280,70 @@ header {
     font-weight: 400;
     color: rgb(160, 133, 84);
 }
+
+
 /*footer*/
+.menu-footer .footer-menu-icons {
+    display: grid;
+    text-align: center;
+    max-width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.menu-footer .footer-menu-icons a {
+    max-width: 360px;
+    margin: 0 5%;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+}
+.menu-footer .footer-menu-icons a:hover {
+    opacity: 0.7;
+}
+.menu-footer .footer-menu-icons img {
+    width: 95%;
+}
+@media (max-width:768px) {
+    .menu-footer .footer-menu-icons {
+        display: grid;
+        text-align: center;
+        max-width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 7px;
+    }
+    .menu-footer .footer-menu-icons img {
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+.menu-footer .footer-menu-icons a {
+    text-decoration: none;
+}
+.menu-footer .icon-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.menu-footer .icon-text .jp {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+.menu-footer .icon-text .en {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(160, 133, 84);
+}
+
 .nav-main {
     width: 100%;
     height: 50px;
     text-align: center;
-    margin: 50px auto;
+    margin: 60px auto 40px auto;
 }
 .nav-main a {
     padding: 15px 90px;
@@ -294,6 +353,14 @@ header {
 .nav-main span {
     font-size: 18px;
     color: black;
+}
+.footer-navMain-after {
+    content: "";
+    display: block;
+    width: 94%;
+    height: 1.8px;
+    margin: 0 auto;
+    background-color:  rgb(160, 133, 84);
 }
 .nav {
     margin: 40px auto;
@@ -327,9 +394,6 @@ header {
     height: 65px;
 }
 @media(max-width:768px) {
-    .nav-main a {
-        
-    }
     .nav .icons {
         gap: 20px;
     }
@@ -346,10 +410,10 @@ header {
         height: 55px;
     }
 }
-
 .nav a:hover {
     text-decoration: underline;
 }
+
 
 /*HOTDRINKS*/
 @media (min-width: 769px) {
@@ -363,8 +427,6 @@ header {
         display: flex;
         flex-direction: row;
         padding: 15px;
-        border-top: 1.8px solid rgb(227, 215, 209);
-        border-bottom: 1.8px solid rgb(227, 215, 209);
     }
     .submenu-nav li {
         list-style: none;
@@ -386,6 +448,22 @@ header {
     .submenu-nav a.current {
         color: rgb(160, 133, 84);
     }
+    .submenuNav-before {
+        content: "";
+        display: block;
+        width: 94%;
+        height: 1.8px;
+        margin: 10px auto;
+        background-color:  rgb(160, 133, 84);
+    }
+    .submenuNav-after {
+        content: "";
+        display: block;
+        width: 94%;
+        height: 1.4px;
+        margin: 10px auto;
+        background-color:  rgb(160, 133, 84);
+    }
 }
 .sub-title {
     display: flex;
@@ -402,6 +480,104 @@ header {
     font-weight: 500;
 }
 
+
+.drinks-menu-1 {
+    display: grid;
+    text-align: center;
+    max-width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.drinks-menu-1 a {
+    max-width: 360px;
+    margin: 0 5%;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+}
+.drinks-menu-1 a:hover {
+    opacity: 0.7;
+}
+.drinks-menu-1 img {
+    width: 95%;
+}
+.main .drinks-menu-1 a {
+    text-decoration: none;
+}
+@media (max-width:768px) {
+    .drinks-menu-1 {
+        display: grid;
+        text-align: center;
+        max-width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 7px;
+    }
+    .drinks-menu-1 img {
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+.drinks-menu-1-after {
+    content: "";
+    display: block;
+    width: 94%;
+    height: 1.8px;
+    margin: 30px auto 60px auto;
+    background-color:  rgb(160, 133, 84);
+}
+
+.drinks-menu-2 {
+    display: grid;
+    text-align: center;
+    max-width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.drinks-menu-2 a {
+    max-width: 360px;
+    margin: 0 5%;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+}
+.drinks-menu-2 a:hover {
+    opacity: 0.7;
+}
+.drinks-menu-2 img {
+    width: 95%;
+}
+.main .drinks-menu-2 a {
+    text-decoration: none;
+}
+@media (max-width:768px) {
+    .drinks-menu-2 {
+        display: grid;
+        text-align: center;
+        max-width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 7px;
+    }
+    .drinks-menu-2 img {
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+.drinks-menu-2-after {
+    content: "";
+    display: block;
+    width: 94%;
+    height: 1.4px;
+    margin: 30px auto 60px auto;
+    background-color:  rgb(160, 133, 84);
+}
 
 /*loading-screen*/
 .loading-screen {
@@ -433,10 +609,4 @@ header {
 @keyframes spin {
     0% {transform: rotate(0deg);}
     100% {transform: rotate(360deg);}
-}
-
-
-
-.child {
-    transform: translateY(-5px);
 }
