@@ -1,20 +1,20 @@
 //hamburgerMenu
-/*
+
 const hbgMenu = document.getElementById(`hbgMenu`);
 const hbgContents = document.getElementById(`hbgContents`);
+const hbgDisplay = document.getElementById('hbgDisplay');
 hbgMenu.addEventListener(`click`, function() {
     hbgMenu.classList.toggle(`active`);
     hbgContents.classList.toggle(`open`);
-    document.body.style.overflow = `hidden`
+    hbgDisplay.classList.toggle(`open`);
 })
-const hbgDisplay = document.getElementById('hbgDisplay');
 hbgDisplay.addEventListener('click', function() {
     hbgMenu.classList.remove(`active`);
     hbgContents.classList.remove(`open`);
-    document.body.style.overflow = ``
+    hbgDisplay.classList.remove(`open`);
 });
-*/
 
+/*
 function openMenu() {
     hbgMenu.classList.add('active');
     hbgContents.classList.add('open');
@@ -29,8 +29,9 @@ hbgMenu.addEventListener('click', () => {
     hbgContents.classList.contains('open') ? closeMenu() : openMenu();
 });
 hbgDisplay.addEventListener('click', closeMenu);
+*/
 
-
+//slideshows
 const slides = document.querySelectorAll('.slide');
 let currentSlide = 0;
 function changeSlide() {
