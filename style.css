@@ -25,10 +25,14 @@ header {
 }
 .title-icon {
     text-align: center;
-    justify-content: center;
     cursor: pointer;
+    width: 100%;
+    height: 80px;
     background-color: rgb(255, 255, 255);
     padding: 10px;
+}
+.title-icon img {
+    margin: 0 auto;
 }
 .menu-bar {
     display: none;
@@ -82,6 +86,11 @@ header {
     }
 }
 @media (max-width: 768px) {
+    /*title-img*/
+    .title-icon {
+        display: flex;
+        justify-content: flex-start;
+    }
     /*hamburger*/
     .hbg-menu {
         position: absolute;
@@ -175,10 +184,23 @@ header {
         color: rgb(230, 214, 151);
     }
 }
+@media (max-width: 460px) {
+    /*title-icon img*/
+    .title-icon {
+        width: 300px;
+        height: 80px;
+    }
+
+    .title-icon img {
+        width: 100%;
+        height: auto;
+        margin: 10px 0;
+    }
+}
 .hbg-display {
     position: fixed;
     opacity: 0;
-    inset: 0;
+    top: 90px;
     height: 100svh;
     width: 100vw;
     background-color: rgb(0, 0, 0, 0.4);
@@ -312,7 +334,10 @@ header {
     opacity: 0.7;
 }
 .menu-footer .footer-menu-icons img {
-    width: 95%;
+    width: 80%;
+    aspect-ratio: 5 / 5;
+    object-fit: cover;
+    margin: 0 auto;
 }
 .menu-footer .footer-menu-icons .current-link img {
     border: solid 3px rgb(62, 48, 5);
@@ -464,7 +489,7 @@ header {
         content: "";
         display: block;
         width: 94%;
-        height: 1.8px;
+        height: 1.4px;
         margin: 10px auto;
         background-color:  rgb(160, 133, 84);
     }
@@ -513,7 +538,10 @@ header {
     opacity: 0.7;
 }
 .drinks-menu-1 img {
-    width: 95%;
+    width: 90%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin: 0 auto;
 }
 .main .drinks-menu-1 a {
     text-decoration: none;
@@ -528,7 +556,9 @@ header {
         gap: 7px;
     }
     .drinks-menu-1 img {
-        width: 95%;
+        width: 90%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
         margin: 0 auto;
         text-align: center;
     }
@@ -537,8 +567,8 @@ header {
     content: "";
     display: block;
     width: 94%;
-    height: 1.8px;
-    margin: 30px auto 60px auto;
+    height: 1.4px;
+    margin: 20px auto;
     background-color:  rgb(160, 133, 84);
 }
 
@@ -578,6 +608,8 @@ header {
     }
     .drinks-menu-2 img {
         width: 95%;
+        aspect-ratio: 5 / 5;
+        object-fit: cover;
         margin: 0 auto;
         text-align: center;
     }
@@ -587,8 +619,78 @@ header {
     display: block;
     width: 94%;
     height: 1.4px;
-    margin: 30px auto 60px auto;
+    margin: 30px auto;
     background-color:  rgb(160, 133, 84);
+}
+.drinks-menu-3 {
+    display: grid;
+    text-align: center;
+    max-width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.drinks-menu-3 a {
+    max-width: 360px;
+    margin: 0 5%;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+}
+.drinks-menu-3 a:hover {
+    opacity: 0.7;
+}
+.drinks-menu-3 img {
+    width: 90%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin: 0 auto;
+}
+.main .drinks-menu-3 a {
+    text-decoration: none;
+}
+@media (max-width:768px) {
+    .drinks-menu-3 {
+        display: grid;
+        text-align: center;
+        max-width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 7px;
+    }
+    .drinks-menu-3 img {
+        width: 90%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+.drinks-menu-3-after {
+    content: "";
+    display: block;
+    width: 94%;
+    height: 1.4px;
+    margin: 30px auto;
+    background-color:  rgb(160, 133, 84);
+}
+
+.drinks-menu-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.drinks-menu-title  {
+    font-size: 18px;   
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.decorate-icon {
+    font-size: 14px;
+    font-weight: 400;
 }
 
 /*loading-screen*/
