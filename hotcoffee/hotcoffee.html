@@ -11,6 +11,10 @@
         <div class="header-title">
             <div class="title-icon">
                 <a href=""><img src="../photos/smeag-logo-horaizon.png" alt=""></a>
+                <a href="../cart/cart.html">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-badge">0</span>
+                </a>
             </div>
         </div>
 
@@ -118,7 +122,9 @@
 
         <div class="drinks-menu">
             <section class="drinks-menu-1">
-                <a href="" class="icon coffee-iconHorizon">
+                <a class="cart-add-button"
+                    data-name="エスプレッソ"
+                    data-price="110">
                     <img src="../photos/sutanmiH1.jpg" alt="">
                     <div class="icon-text">  
                         <span class="jp">エスプレッソ</span>
@@ -126,7 +132,9 @@
                         <span class="price">110</span>
                     </div>
                 </a> 
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="アメリカーノ"
+                    data-price="120">
                     <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">アメリカーノ</span>
@@ -134,7 +142,9 @@
                         <span class="price">120</span>
                     </div>
                 </a> 
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="カフェラテ"
+                    data-price="130">
                     <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">カフェラテ</span>
@@ -142,15 +152,19 @@
                         <span class="price">130</span>
                     </div>
                 </a> 
-                <a class="icon ">
-                    <img src="../photos/sutanmiH5.jpg" alt="">
+                <a class="cart-add-button"
+                    data-name="カプチーノ"
+                    data-price="130">
+                    <img src="../photos/hotdrinks.cafecappucchino.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">カプチーノ</span>
                         <span class="en">CAFE CAPPUCCINO</span>
                         <span class="price">130</span>
                     </div>
                 </a> 
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="カフェモカ"
+                    data-price="150">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">カフェモカ</span>
@@ -158,16 +172,20 @@
                         <span class="price">150</span>
                     </div>
                 </a> 
-                <a class="icon ">
-                    <img src="../photos/sutanmiH5.jpg" alt="">
+                <a class="cart-add-button"
+                    data-name="キャラメルマキアート"
+                    data-price="150">
+                    <img src="../photos/hotdrinks.cafecaramer.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">キャラメルマキアート</span>
                         <span class="en">CAFE CARAMEL</span>
                         <span class="price">150</span>
                     </div>
                 </a>
-                <a class="icon ">
-                    <img src="../photos/sutanmiH5.jpg" alt="">
+                <a class="cart-add-button"
+                    data-name="ホワイトコーヒー"
+                    data-price="150">
+                    <img src="../photos/hotdrinks.cafe white.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">ホワイトコーヒー</span>
                         <span class="en">CAFE WHITE</span>
@@ -176,6 +194,15 @@
                 </a>
             </section>
             <div class="drinks-menu-1-after"></div>
+        </div>
+
+        <div class="sub-menu-cart-modal" id="submenuModal">
+            <div class="modal-content">
+                <button class="close-btn" id="closeBtn">&times;</button>
+                <p class="content" id="modalName"></p>
+                <p class="content" id="modalPrice"></p>
+                <button class="add-to-button" id="addToCartBtn">カートに追加</button>
+            </div>
         </div>
     </main>
     
@@ -249,6 +276,7 @@
     </div>
     <div class="hidden" id="hiddenContent"></div>
 
+    <script src="../cart.js"></script>
     <script src="../script.js"></script>
 </body>
 </html>

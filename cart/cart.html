@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart.payment</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .cart-page {
+            min-height: 65svh;
+            padding: 20px;
+        }
+        .cart-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .cart-container h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: rgb(62, 48, 5);
+            text-align: center;
+        }
+        
+        .cart-empty {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .cart-empty p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        .back-btn {
+            display: inline-block;
+            background-color: rgb(62, 48, 5);
+            color: white;
+            padding: 12px 35px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .back-btn:hover {
+            background-color: rgb(143, 113, 56);    
+        }
+
+        .cart-items-container {
+            margin-bottom: 30px;
+        }
+        .cart-item {
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr;
+            gap: 20px;
+            align-items: center;
+            padding: 20px;
+            border: 1.5px solid #e0e0e0;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background-color: white;
+            transition: box-shadow 0.3s ease;
+        }
+        .cart-item:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .item-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            color: rgb(62, 48, 5);
+        }
+        .item-name-en {
+            font-size: 14px;
+            color: rgb(160, 133, 84);
+            margin: 0;
+        }
+        .item-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin: 5px 0 0 0;
+        }
+
+        .item-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .qty-btn:hover {
+            background-color: rgb(250, 244, 236);
+            border-color: rgb(160, 133, 84);
+        }
+        .qty-btn:active {
+            transform: scale(0.95);
+        }
+        .quantity-input {
+            width: 60px;
+            height: 32px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .quantity-input:focus {
+            outline: none;
+            border-color: rgb(160, 133, 84);
+        }
+        .btn-remove {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-remove:hover {
+            background-color: #c82333;
+        }
+        .item-subtotal {
+            font-weight: bold;
+            font-size: 20px;
+            text-align: right;
+            color: rgb(160, 133, 84);
+        }
+
+        @media (max-width: 768px) {
+            .cart-item {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .item-controls {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .item-subtotal {
+                text-align: center;
+                font-size: 22px;
+            }
+
+            .cart-container h1 {
+                font-size: 24px;
+            }
+        }
+
+        .cart-summary {
+            background-color: rgb(250, 244, 236);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .summary-row .total-row {
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 2px solid rgb(160, 133, 84);
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .summary-label {
+            color: #333;
+        }
+        .summary-value {
+            font-weight: 600;
+        }
+        .total-price {
+            color: rgb(160, 133, 84);
+        }
+        .checkout-btn {
+            width: 100%;
+            background-color: rgb(62, 48, 5);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .checkout-btn:hover:not(:disabled) {
+            background-color: rgb(143, 113, 56);
+        }
+        .clear-btn {
+            width: 100%;
+            background-color: transparent;
+            color: #666;
+            border: 1.5px solid #ddd;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .clear-btn {
+            background-color: #f5f5f5;
+            border-color: #999;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">
+            <div class="title-icon">
+                <a href=""><img src="../photos/smeag-logo-horaizon.png" alt=""></a>
+            </div>
+        </div>
+
+        <div class="hamburger">
+            <div class="hbg-menu-background" id="hbgMenuBackground"></div>
+
+            <div class="hbg-menu" id="hbgMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="hbg-contents" id="hbgContents">
+                <ul>
+                    <li><a href="../index.html">
+                        <div class="menu-text">
+                            <span class="jp">ホーム</span>
+                            <span class="en">HOME</span>
+                        </div>
+                        <div class="arrow">
+                            <span>&gt;</span>
+                        </div>
+                    </a></li>
+                    <li class="current-link"><a href="../hotcoffee/hotcoffee.html">
+                        <div class="menu-text">
+                            <span class="jp">ホットコーヒー</span>
+                            <span class="en">HOT COFFEE</span>
+                        </div>
+                        <div class="arrow">
+                            <span>&gt;</span>
+                        </div>
+                    </a></li>
+                    <li><a href="../icecoffee/icecoffee.html">
+                        <div class="menu-text">
+                            <span class="jp">アイスコーヒー</span>
+                            <span class="en">ICE COFFEE</span>
+                        </div>
+                        <div class="arrow">
+                            <span>&gt;</span>
+                        </div>
+                    </a></li>
+                    <li><a href="../tea/tea.html">
+                        <div class="menu-text">
+                            <span class="jp">ティー</span>
+                            <span class="en">TEA</span>
+                        </div>
+                        <div class="arrow">
+                            <span>></span>
+                        </div>
+                    </a></li>
+                    <li><a href="../juice/juice.html">
+                        <div class="menu-text">
+                            <span class="jp">ジュース</span>
+                            <span class="en">JUICE</span>
+                        </div>
+                        <div class="arrow">
+                            <span>></span>
+                        </div>
+                    </a></li>
+                    <li><a href="../desserts/desserts.html">
+                        <div class="menu-text">
+                            <span class="jp">デザート</span>
+                            <span class="en">DESSERTS</span>
+                        </div>
+                        <div class="arrow">
+                            <span>&gt;</span>
+                        </div>
+                    </a></li>
+                    <li><a href="../others/others.html">
+                        <div class="menu-text">
+                            <span class="jp">その他</span>
+                            <span class="en">OTHERS</span>
+                        </div>    
+                        <div class="arrow">
+                            <span>></span>
+                        </div>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="hbg-display" id="hbgDisplay"></div>
+
+    <main class="cart-page">
+        <div class="cart-container">
+            <h1>🛒 ショッピングカート</h1>
+
+            <div class="cart-empty" id="cartEmpty" style="display: none;">
+                <p>カートはからです</p>
+                <a href="../index.html" class="back-btn">メニューに戻る</a>
+            </div>
+
+            <div class="cart-items-container" id="cartItemsContainer">
+
+            </div>
+
+            <div class="cart-summary" id="cartSummary" style="display: none;">
+                <div class="summary-row">
+                    <span class="summary-label">小計:</span>
+                    <span id="cart-subtotal" class="summary-value">₱0</span>
+                </div>
+                <div class="summary-row total-row">
+                    <span class="summary-label">合計:</span>
+                    <span id="cart-total" class="summary-value total-price">₱0</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">決済へ進む</button>
+                <button class="clear-btn" id="clearBtn">カートを空にする</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="menu-footer">
+            <section class="footer-menu-icons">
+                <a href="../hotcoffee/hotcoffee.html">
+                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
+                    <div class="icon-text">  
+                        <span class="jp">ホットコーヒー</span>
+                        <span class="en">HOT COFFEE</span>
+                    </div>
+                </a> 
+                <a href="../icecoffee/icecoffee.html">
+                    <img src="../photos/icedrinks.iceamericano.jpg" alt="">
+                    <div class="icon-text">
+                        <span class="jp">アイスコーヒー</span>
+                        <span class="en">ICE COFFEE</span>
+                    </div>
+                </a> 
+                <a href="../tea/tea.html">
+                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
+                    <div class="icon-text">
+                        <span class="jp">ティー</span>
+                        <span class="en">HOT TEA</span>
+                    </div>
+                </a> 
+                <a href="../juice/juice.html">
+                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
+                    <div class="icon-text">
+                        <span class="jp">ジュース</span>
+                        <span class="en">JUICE</span>
+                    </div>
+                </a> 
+                <a href="../desserts/desserts.html">
+                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
+                    <div class="icon-text">    
+                        <span class="jp">デザート</span>
+                        <span class="en">DESSERTS</span>
+                    </div>
+                </a> 
+                <a href="../others/others.html">
+                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
+                    <div class="icon-text">    
+                        <span class="jp">その他</span>
+                        <span class="en">OTHERS</span>
+                    </div>
+                </a>
+            </section>
+        </div>
+        <div class="nav-main">
+            <a href="../index.html">
+                <span>メニューTOP</span>
+                <span>&gt;</span>
+            </a>
+        </div>
+        <div class="footer-navMain-after"></div>
+
+        <div class="nav">
+            <ol class="icons">
+                <li class="icon smeag-icon"><a href="https://smeag.jp/"><img src="../photos/SMEAG.icon.png" alt="smeagoffcial"></a></li>
+                <li class="icon instagram-icon"><a href="https://www.instagram.com/smeag_global_education"><img src="../photos/Instagram.icon.mono.png" alt="instagram"></a></li>
+                <li class="icon twitter-icon"><a href=""><img src="../photos/x.icon.mono.png" alt=""></a></li>
+                <li class="icon youtube-icon"><a href="https://www.youtube.com/@SMEAGGlobalEducation/videos"><img src="../photos/youtube.icon.mono.png" alt=""></a></li>
+            </ol>
+        </div>
+    </footer>
+
+    <script src="../cart.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>

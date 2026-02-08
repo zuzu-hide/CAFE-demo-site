@@ -1,20 +1,46 @@
-//hamburgerMenu
+//slideshows
+const slides = document.querySelectorAll('.slide');
+if (slides.length > 0) {
+    let currentSlide = 0;
+    
+    function changeSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    setInterval(changeSlide, 4000);
+}
 
-const hbgMenu = document.getElementById(`hbgMenu`);
-const hbgContents = document.getElementById(`hbgContents`);
-const hbgDisplay = document.getElementById('hbgDisplay');
-hbgMenu.addEventListener(`click`, function() {
-    hbgMenu.classList.toggle(`active`);
-    hbgContents.classList.toggle(`open`);
-    hbgDisplay.classList.toggle(`open`);
-})
-hbgDisplay.addEventListener('click', function() {
-    hbgMenu.classList.remove(`active`);
-    hbgContents.classList.remove(`open`);
-    hbgDisplay.classList.remove(`open`);
+
+//loading-screen
+window.addEventListener("load", function() {
+    const loadingScreen = document.getElementById("loadingScreen");
+    const hiddenContent = document.getElementById("hiddenContent");
+
+    if (!hiddenContent || !loadingScreen) return; 
+        hiddenContent.classList.remove("hidden");
+
+    this.setTimeout(function() {
+        loadingScreen.classList.add("loaded");
+
+        setTimeout(function() {
+            loadingScreen.style.display = "none"
+        },2500);
+    },1500);
 });
 
-/*
+//
+const hbgMenu = document.getElementById(`hbgMenu`);
+const hbgContents = document.getElementById(`hbgContents`);
+const display = document.getElementById('hbgDisplay');
+const submenuModal = document.getElementById("submenuModal");
+const modalName = document.getElementById("modalName");
+const modalPrice = document.getElementById("modalPrice");
+const closeBtn = document.getElementById("closeBtn");
+const addToCartBtn = document.getElementById('addToCartBtn');
+
+//hbgMenu
 function openMenu() {
     hbgMenu.classList.add('active');
     hbgContents.classList.add('open');
@@ -25,34 +51,71 @@ function closeMenu() {
     hbgContents.classList.remove('open');
     hbgDisplay.classList.remove(`open`);
 }
-hbgMenu.addEventListener('click', () => {
-    hbgContents.classList.contains('open') ? closeMenu() : openMenu();
-});
-hbgDisplay.addEventListener('click', closeMenu);
-*/
-
-//slideshows
-const slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
-function changeSlide() {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
+if (hbgMenu) {
+    hbgMenu.addEventListener('click', () => {
+        hbgContents.classList.contains('open') ? closeMenu() : openMenu();
+    });
+};
+if  (display) {
+    display.addEventListener('click', () => {
+        closeMenu();
+        closeModal();
+    });
 }
-setInterval(changeSlide, 4000)
 
-//loading-screen
-window.addEventListener("load", function() {
-    const loadingScreen = document.getElementById("loadingScreen");
-    const hiddenContent = document.getElementById("hiddenContent");
+//modal開閉
+let currentProduct = null;
+function openModal(name, price) {
+    if (!submenuModal) return;
 
-    hiddenContent.classList.remove("hidden");
+    currentProduct = { name, price: Number(price) };
+    modalName.textContent = `「${name}」をカートに入れますか？`
+    modalPrice.textContent = `₱${price}`;
 
-    this.setTimeout(function() {
-        loadingScreen.classList.add("loaded");
+    submenuModal.classList.add('open');
+    display.classList.add('open');
+}
+function closeModal() {
+    if (!submenuModal) return;
 
-        setTimeout(function() {
-            loadingScreen.style.display = "none"
-        },2500);
-    },1500);
+    submenuModal.classList.remove('open');
+    if (!hbgContents.classList.contains('open')) {
+        display.classList.remove('open');
+    }
+}
+
+//submenu-main-modal
+const cartAdd = document.querySelectorAll(".drinks-menu a");
+cartAdd.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const item = e.currentTarget;
+        const name = item.dataset.name;
+        const price = item.dataset.price;
+
+        if (name && price) {
+            openModal(name, price);
+        }
+    });
 });
+if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+}
+
+
+
+if (addToCartBtn) {
+    addToCartBtn.addEventListener('click', () => {
+        if (!currentProduct) return;
+
+        cart.addItem({
+            name: currentProduct.name,
+            price: Number(currentProduct.price),
+        });
+
+        closeModal();
+        currentProduct = null;
+    })
+    
+}
