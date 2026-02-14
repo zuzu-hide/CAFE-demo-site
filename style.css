@@ -30,8 +30,8 @@ header {
     background-color: rgb(255, 255, 255);
     padding: 10px;
 }
-.title-icon img {
-    margin: 0 auto;
+.title-icon .smeag-official-icon img {
+    margin: auto;
 }
 .title-icon a {
     text-decoration: none;
@@ -39,42 +39,50 @@ header {
 .menu-bar {
     display: none;
 }
-
-.cart-icon-wrapper {
-    position: relative;
-}
-
 .cart-link {
-    position: relative;
     text-decoration: none;
     display: flex;
     align-items: center;
 }
-
 .cart-icon {
-    font-size: 32px;
+    display: inline-block;
+    position: relative;
     cursor: pointer;
     transition: transform 0.2s ease;
 }
-
-.cart-link:hover .cart-icon {
-    transform: scale(1.1);
+.cart-icon img{
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: auto 5px;
 }
-
 .cart-badge {
     position: absolute;
-    top: 25px;
-    right: 110px;
+    top: 50%;
+    right: 32%;
+    transform: translate(0, -70%);
     background-color: rgb(160, 133, 84);
     color: white;
     border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    display: none;
+    width: 18px;
+    height: 18px;
+    margin: 0 auto;
+    display: inline-block;
     align-items: center;
     justify-content: center;
     font-size: 12px;
     font-weight: bold;
+}
+@media (max-width: 522px) {
+    .cart-icon img{
+        display: none;
+    }
+    .cart-badge {
+        display: none;
+    }
+}
+.cart-link:hover .cart-icon {
+    transform: scale(1.1);
 }
 /* カート通知 */
 .cart-notification {
@@ -92,11 +100,29 @@ header {
     z-index: 1000;
     font-size: 16px;
 }
-
+@media (max-width:522px) {
+    .cart-count-text {
+        background-color: rgb(160, 133, 84);
+        color: white;
+        width: 22px;
+        height: 22px;
+        margin: 0 10px;
+        padding: 0 7px;
+        border-radius: 50%;
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
 .cart-notification.show {
     opacity: 1;
     transform: translateX(0);
 }
+
+
 @media (min-width:769px) {
     /*hamburger*/
     .hamburger {
@@ -245,17 +271,18 @@ header {
         color: rgb(230, 214, 151);
     }
 }
-@media (max-width: 460px) {
+@media (max-width: 522px) {
     /*title-icon img*/
     .title-icon {
         width: 300px;
-        height: 80px;
+        height: auto;
+        margin: auto 0;
     }
 
-    .title-icon img {
+    .title-icon .smeag-official-icon img {
         width: 100%;
         height: auto;
-        margin: 10px 0;
+        margin: auto 0;
     }
 }
 .hbg-display {
@@ -446,6 +473,12 @@ header {
     padding: 15px 90px;
     border: solid 5px rgb(227, 215, 209);
     text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+.nav-main a:hover {
+    transform: translateY(-5px);
+    box-shadow: 10px 5px 10px 1px rgba(0, 0, 0, 0.3);
 }
 .nav-main span {
     font-size: 18px;
@@ -514,35 +547,48 @@ header {
 
 /*SubMenu*/
 @media (min-width: 769px) {
-    .submenu-nav ul {
+    .submenu-links ul {
         display: none;
     }
 }
 @media (max-width: 768px) {
-    .submenu-nav ul {
+    .submenu-links ul {
         list-style: none;
         display: flex;
         flex-direction: row;
         padding: 15px;
     }
-    .submenu-nav li {
+    .submenu-links li {
         list-style: none;
     }
-    .submenu-nav li:not(.home-link):not(.current-link) {
+    .submenu-links li:not(.home-link):not(.current-link):not(.cart-link) {
         display: none;
     }
-    .submenu-nav li.home-link::after {
+    .submenu-links li.home-link::after {
         content: "/";
         margin: 0 10px ;
         color: black;
+        text-decoration: none;
     }
-    .submenu-nav a {
+    .submenu-links .cart-link {
+        display: none;
+    }
+    .submenu-links .home-link a:hover {
+        text-decoration: underline;
+    }
+    .submenu-links .cart-link span:hover {
+        text-decoration: underline;
+    }
+    .submenu-links .current-link a:hover {
+        text-decoration: underline;
+    }
+    .submenu-links a {
         text-decoration: none;
         font-weight: 400;
         color: black;
         cursor: pointer;
     }
-    .submenu-nav a.current {
+    .submenu-links a.current {
         color: rgb(160, 133, 84);
     }
     .submenuNav-before {
@@ -560,6 +606,17 @@ header {
         height: 1.4px;
         margin: 10px auto;
         background-color:  rgb(160, 133, 84);
+    }
+}
+@media (max-width:522px) {
+    .submenu-links .cart-link {
+        display: block;
+    }
+    .submenu-links li.cart-link::after {
+        content: "/";
+        margin: 0 10px ;
+        color: black;
+        text-decoration: none;
     }
 }
 .sub-title {

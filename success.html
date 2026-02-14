@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>決済完了 - SMEAG CAFE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <style>
+        .success-page {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 1s ease;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .success-title {
+            font-size: 32px;
+            color: rgb(62, 48, 5);
+            margin-bottom: 15px;
+        }
+        .success-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .success-btn {
+            display: inline-block;
+            background-color: rgb(62, 48, 5);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .success-btn:hover {
+            background-color: rgb(143, 113, 56);
+        }
+    </style>
+<body>
+    <header>
+        <div class="header-title">
+            <div class="title-icon">
+                <a href="index.html"><img src="photos/smeag-logo-horaizon.png" alt=""></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="success-page">
+        <div class="success-icon">✅</div>
+        <h1 class="success-title">決済が完了しました！</h1>
+        <p class="success-message">
+            ご注文ありがとうございます。<br>
+            決済が正常に処理されました。
+        </p>
+        <a href="index.html" class="success-btn">メニューに戻る</a>
+    </main>
+
+    <footer>
+        <div class="footer-navMain-after"></div>
+        <div class="nav">
+            <ol class="icons">
+                <li class="icon smeag-icon"><a href="https://smeag.jp/"><img src="photos/SMEAG.icon.png" alt="smeagoffcial"></a></li>
+                <li class="icon instagram-icon"><a href="https://www.instagram.com/smeag_global_education"><img src="photos/Instagram.icon.mono.png" alt="instagram"></a></li>
+                <li class="icon twitter-icon"><a href=""><img src="photos/x.icon.mono.png" alt=""></a></li>
+                <li class="icon youtube-icon"><a href="https://www.youtube.com/@SMEAGGlobalEducation/videos"><img src="photos/youtube.icon.mono.png" alt=""></a></li>
+            </ol>
+        </div>
+    </footer>
+
+    <script src="cart.js"></script>
+    <script>
+        // 決済完了後、カートをクリア
+        cart.clear();
+        console.log('決済完了: カートをクリアしました');
+    </script>
+</body>
+</html>

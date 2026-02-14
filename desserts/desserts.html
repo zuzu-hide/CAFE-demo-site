@@ -10,7 +10,13 @@
     <header>
         <div class="header-title">
             <div class="title-icon">
-                <a href=""><img src="../photos/smeag-logo-horaizon.png" alt=""></a>
+                <a href="" class="smeag-official-icon"><img src="../photos/smeag-logo-horaizon.png" alt=""></a>
+                <a href="../cart/cart.html">
+                    <span class="cart-icon">
+                        <img src="../photos/cart.img.jpg" alt="">
+                        <span class="cart-badge">0</span>
+                    </span>
+                </a>
             </div>
         </div>
 
@@ -34,7 +40,7 @@
                             <span>&gt;</span>
                         </div>
                     </a></li>
-                    <li><a href="../hotcoffee/hotcoffee.html">
+                    <li class="current-link"><a href="../hotcoffee/hotcoffee.html">
                         <div class="menu-text">
                             <span class="jp">ホットコーヒー</span>
                             <span class="en">HOT COFFEE</span>
@@ -70,7 +76,7 @@
                             <span>></span>
                         </div>
                     </a></li>
-                    <li class="current-link"><a href="../desserts/desserts.html">
+                    <li><a href="../desserts/desserts.html">
                         <div class="menu-text">
                             <span class="jp">デザート</span>
                             <span class="en">DESSERTS</span>
@@ -99,15 +105,26 @@
 
         <div class="submenuNav-before"></div>
         <div class="submenu-nav">
-            <ul>
-                <li class="home-link"><a href="../index.html">ホーム</a></li>
-                <li><a href="../hotcoffee/hotcoffee.html">ホットコーヒー</a></li>
-                <li><a href="../icecoffee/icecoffee.html">アイスコーヒー</a></li>
-                <li><a href="../tea/tea.html">ティー</a></li>
-                <li><a href="../juice/juice.html">ジュース</a></li>
-                <li class="current-link"><a href="../desserts/desserts.html" class="current">デザート</a></li>
-                <li><a href="../others/others.html">その他</a></li>
-            </ul>
+            <div class="submenu-links">
+                <ul>
+                    <li class="parent-link home-link"><a href="../index.html">ホーム</a></li>
+                    <li class="parent-link cart-link">
+                        <a href="../cart/cart.html">
+                            <span>カート</span>
+                            <p class="parent-link cart-count-text">0</p>
+                        </a>
+                    </li>
+                    <li><a href="../hotcoffee/hotcoffee.html">ホットコーヒー</a></li>
+                    <li><a href="../icecoffee/icecoffee.html" >アイスコーヒー</a></li>
+                    <li><a href="../tea/tea.html">ティー</a></li>
+                    <li><a href="../juice/juice.html">ジュース</a></li>
+                    <li class="parent-link current-link"><a href="../desserts/desserts.html" class="current">デザート</a></li>
+                    <li><a href="../others/others.html">その他</a></li>
+                </ul>
+            </div>
+            <div class="submenu-links cart">
+                
+            </div>
         </div>
         <div class="submenuNav-after"></div>
 
@@ -118,7 +135,9 @@
 
         <div class="drinks-menu">
             <section class="drinks-menu-1">
-                <a href="" class="icon coffee-iconHorizon">
+                <a class="cart-add-button"
+                    data-name="ブラウニー"
+                    data-price="100">
                     <img src="../photos/sutanmiH1.jpg" alt="">
                     <div class="icon-text">  
                         <span class="jp">ブラウニー</span>
@@ -126,7 +145,9 @@
                         <span class="price">100</span>
                     </div>
                 </a> 
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="バナナチョコマフィン"
+                    data-price="90">
                     <img src="../photos/sutanmiH2.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">バナナチョコマフィン</span>
@@ -134,7 +155,9 @@
                         <span class="price">90</span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="ケーキ缶"
+                    data-price="250">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">ケーキ缶</span>
@@ -142,15 +165,19 @@
                         <span class="price">250</span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="にんじんケーキ"
+                    data-price="95">
                     <img src="../photos/sutanmiH3.jpg" alt="">
                     <div class="icon-text">
-                        <span class="jp">ニンジンケーキ</span>
+                        <span class="jp">にんじんケーキ</span>
                         <span class="en">CARROT CAKE</span>
                         <span class="price">95</span>
                     </div>
                 </a> 
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="バナナケーキ"
+                    data-price="95">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">バナナケーキ</span>
@@ -158,20 +185,34 @@
                         <span class="price">95</span>
                     </div>
                 </a>
-                <a class="icon ">
-                    <img src="../photos/sutanmiH5.jpg" alt="">
+                <a class="cart-add-button"
+                    data-name="グラノーラクッキー"
+                    data-price="185">
+                    <img src="../photos/desserts.cookie.miche'ls.jpg" alt="">
                     <div class="icon-text">    
-                        <span class="jp">cookie</span>
-                        <span class="en">HOT TEA</span>
-                        <span class="price">110</span>
+                        <span class="jp">グラノーラクッキー</span>
+                        <span class="en">Granola Cookie</span>
+                        <span class="price">185</span>
                     </div>
                 </a>
-                <a class="icon ">
-                    <img src="../photos/sutanmiH5.jpg" alt="">
+                <a class="cart-add-button"
+                    data-name="アーモンドクッキー"
+                    data-price="155">
+                    <img src="../photos/desserts.cookie almond.jpg" alt="">
                     <div class="icon-text">    
-                        <span class="jp">cookie</span>
+                        <span class="jp">アーモンドクッキー</span>
+                        <span class="en">Almond butter Cookie</span>
+                        <span class="price">155</span>
+                    </div>
+                </a>
+                <a class="cart-add-button"
+                    data-name="チョコレートクッキー"
+                    data-price="130">
+                    <img src="../photos/desserts.chococookie.jpg" alt="">
+                    <div class="icon-text">    
+                        <span class="jp">チョコレートクッキー</span>
                         <span class="en">CHOCOLATE</span>
-                        <span class="price">140</span>
+                        <span class="price">130</span>
                     </div>
                 </a>
             </section>
@@ -183,7 +224,9 @@
                 <p class="decorate-icon">＊</p>
             </div>
             <section class="drinks-menu-2">
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="チーズリング"
+                    data-price="">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">チーズリング</span>
@@ -191,7 +234,9 @@
                         <span class="price"></span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="かっぱえびせん"
+                    data-price="">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">かっぱえびせん</span>
@@ -199,7 +244,9 @@
                         <span class="price"></span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="Piattos SourCream & Onion"
+                    data-price="50">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">Piattos</span>
@@ -207,7 +254,9 @@
                         <span class="price">50</span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="Piattos BBQ"
+                    data-price="50">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">Piattos</span>
@@ -215,15 +264,9 @@
                         <span class="price">50</span>
                     </div>
                 </a>
-                <a class="icon ">
-                    <img src="../photos/sutanmiH5.jpg" alt="">
-                    <div class="icon-text">    
-                        <span class="jp">cookie</span>
-                        <span class="en">CHOCOLATE</span>
-                        <span class="price">140</span>
-                    </div>
-                </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="ボーイ・バワン"
+                    data-price="">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">ボーイ・バワン</span>
@@ -231,7 +274,9 @@
                         <span class="price"></span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="マンチャーグリーンピース"
+                    data-price="">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">マンチャーグリーンピース</span>
@@ -239,7 +284,9 @@
                         <span class="price"></span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="LuckyMe!Supreme Bulalo"
+                    data-price="">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">Lucky Me! Supreme</span>
@@ -247,7 +294,9 @@
                         <span class="price"></span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="LuckyMe!Supreme La Paz Batchoy"
+                    data-price="150">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">Lucky Me! Supreme</span>
@@ -255,15 +304,19 @@
                         <span class="price"></span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="ホワイトコーヒー"
+                    data-price="150">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
-                        <span class="jp">kappura-menn</span>
+                        <span class="jp">Kappura-menn</span>
                         <span class="en">HOT TEA</span>
                         <span class="price">110</span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="ホワイトコーヒー"
+                    data-price="150">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">ホットチョコ</span>
@@ -271,7 +324,9 @@
                         <span class="price">140</span>
                     </div>
                 </a>
-                <a class="icon ">
+                <a class="cart-add-button"
+                    data-name="ホワイトコーヒー"
+                    data-price="150">
                     <img src="../photos/sutanmiH5.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">kappura-menn</span>
@@ -281,6 +336,15 @@
                 </a>
             </section>
             <div class="drinks-menu-2-after"></div>
+
+            <div class="sub-menu-cart-modal" id="submenuModal">
+            <div class="modal-content">
+                <button class="close-btn" id="closeBtn">&times;</button>
+                <p class="content" id="modalName"></p>
+                <p class="content" id="modalPrice"></p>
+                <button class="add-to-button" id="addToCartBtn">カートに追加</button>
+            </div>
+        </div>
         </div>
     </main>
 
@@ -288,7 +352,7 @@
         <div class="menu-footer">
             <section class="footer-menu-icons">
                 <a href="../hotcoffee/hotcoffee.html">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
                     <div class="icon-text">  
                         <span class="jp">ホットコーヒー</span>
                         <span class="en">HOT COFFEE</span>
@@ -302,28 +366,28 @@
                     </div>
                 </a> 
                 <a href="../tea/tea.html">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/icedrinks.greenappletea.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">ティー</span>
                         <span class="en">HOT TEA</span>
                     </div>
                 </a> 
                 <a href="../juice/juice.html">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/icedrinks.bananashake.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">ジュース</span>
                         <span class="en">JUICE</span>
                     </div>
                 </a> 
                 <a href="../desserts/desserts.html" class="current-link">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/desserts.cookie.miche'ls.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">デザート</span>
                         <span class="en">DESSERTS</span>
                     </div>
                 </a> 
                 <a href="../others/others.html">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">その他</span>
                         <span class="en">OTHERS</span>
@@ -354,6 +418,7 @@
     </div>
     <div class="hidden" id="hiddenContent"></div>
 
+    <script src="../cart.js"></script>
     <script src="../script.js"></script>
 </body>
 </html>

@@ -30,7 +30,7 @@ window.addEventListener("load", function() {
     },1500);
 });
 
-//
+
 const hbgMenu = document.getElementById(`hbgMenu`);
 const hbgContents = document.getElementById(`hbgContents`);
 const display = document.getElementById('hbgDisplay');
@@ -65,10 +65,10 @@ if  (display) {
 
 //modal開閉
 let currentProduct = null;
-function openModal(name, price) {
+function openModal(name, nameEn, price) {
     if (!submenuModal) return;
 
-    currentProduct = { name, price: Number(price) };
+    currentProduct = { name: name, nameEn: nameEn || name, price: Number(price) };
     modalName.textContent = `「${name}」をカートに入れますか？`
     modalPrice.textContent = `₱${price}`;
 
@@ -85,17 +85,18 @@ function closeModal() {
 }
 
 //submenu-main-modal
-const cartAdd = document.querySelectorAll(".drinks-menu a");
+const cartAdd = document.querySelectorAll(".cart-add-button");
 cartAdd.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
 
         const item = e.currentTarget;
         const name = item.dataset.name;
+        const nameEn = item.dataset.nameEn || name;
         const price = item.dataset.price;
 
         if (name && price) {
-            openModal(name, price);
+            openModal(name, nameEn, price);
         }
     });
 });
@@ -105,17 +106,19 @@ if (closeBtn) {
 
 
 
-if (addToCartBtn) {
+if (addToCartBtn && window.cart) {
     addToCartBtn.addEventListener('click', () => {
         if (!currentProduct) return;
 
-        cart.addItem({
+        window.cart.addItem({
             name: currentProduct.name,
+            nameEn: currentProduct.nameEn,
             price: Number(currentProduct.price),
         });
 
         closeModal();
         currentProduct = null;
-    })
+    });
     
+
 }

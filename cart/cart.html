@@ -6,6 +6,26 @@
     <title>cart.payment</title>
     <link rel="stylesheet" href="../style.css">
     <style>
+        .main-top-border,
+        .main-fotter-border {
+            content: "";
+            display: block;
+            width: 94%;
+            height: 1.8px;
+            margin: 20px auto;
+            background-color:  rgb(160, 133, 84);
+        }
+        .container-title {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;            
+        }
+        .container-title h1 {
+            margin: 0 10px;
+        }
+        .container-title img {
+            width: 40px;
+        }
         .cart-page {
             min-height: 65svh;
             padding: 20px;
@@ -61,7 +81,7 @@
             transition: box-shadow 0.3s ease;
         }
         .cart-item:hover {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
         }
         .item-info {
             display: flex;
@@ -88,7 +108,7 @@
 
         .item-controls {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             gap: 12px;
         }
@@ -99,6 +119,20 @@
         }
         .qty-btn {
             width: 32px;
+            height: 32px;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .qty-btn.delete {
+            width: 45px;
             height: 32px;
             border: 1px solid #ddd;
             background-color: white;
@@ -206,6 +240,7 @@
         }
         .checkout-btn {
             width: 100%;
+            max-width: 500px;
             background-color: rgb(62, 48, 5);
             color: white;
             border: none;
@@ -214,6 +249,8 @@
             font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
+            display: block;
+            margin: 0 auto;
             margin-top: 20px;
             transition: background-color 0.3s ease;
         }
@@ -222,20 +259,23 @@
         }
         .clear-btn {
             width: 100%;
-            background-color: transparent;
+            max-width: 500px;
+            background-color: #f5f5f5;
             color: #666;
             border: 1.5px solid #ddd;
             padding: 12px;
             font-size: 14px;
             border-radius: 8px;
             cursor: pointer;
+            display: block;
+            margin: 0 auto;
             margin-top: 10px;
             transition: all 0.3s ease;
         }
-        .clear-btn {
+        .clear-btn:hover {
             background-color: #f5f5f5;
-            border-color: #999;
-            color: #333;
+            color: #222;
+            border: 1.8px solid  #999;
         }
     </style>
 </head>
@@ -267,7 +307,7 @@
                             <span>&gt;</span>
                         </div>
                     </a></li>
-                    <li class="current-link"><a href="../hotcoffee/hotcoffee.html">
+                    <li><a href="../hotcoffee/hotcoffee.html">
                         <div class="menu-text">
                             <span class="jp">ホットコーヒー</span>
                             <span class="en">HOT COFFEE</span>
@@ -327,11 +367,15 @@
     </header>
     <div class="hbg-display" id="hbgDisplay"></div>
 
+    <div class="main-top-border"></div>
     <main class="cart-page">
         <div class="cart-container">
-            <h1>🛒 ショッピングカート</h1>
+            <div class="container-title"> 
+                <span><img src="../photos/cart.img.jpg" alt=""></span>
+                <h1>ショッピングカート</h1>
+            </div>
 
-            <div class="cart-empty" id="cartEmpty" style="display: none;">
+            <div class="cart-empty" id="cartEmpty">
                 <p>カートはからです</p>
                 <a href="../index.html" class="back-btn">メニューに戻る</a>
             </div>
@@ -340,7 +384,7 @@
 
             </div>
 
-            <div class="cart-summary" id="cartSummary" style="display: none;">
+            <div class="cart-summary" id="cartSummary">
                 <div class="summary-row">
                     <span class="summary-label">小計:</span>
                     <span id="cart-subtotal" class="summary-value">₱0</span>
@@ -354,6 +398,7 @@
             </div>
         </div>
     </main>
+    <div class="main-fotter-border"></div>
 
     <footer>
         <div class="menu-footer">
@@ -373,21 +418,21 @@
                     </div>
                 </a> 
                 <a href="../tea/tea.html">
-                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
+                    <img src="../photos/icedrinks.greenappletea.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">ティー</span>
                         <span class="en">HOT TEA</span>
                     </div>
                 </a> 
                 <a href="../juice/juice.html">
-                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
+                    <img src="../photos/icedrinks.bananashake.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">ジュース</span>
                         <span class="en">JUICE</span>
                     </div>
                 </a> 
                 <a href="../desserts/desserts.html">
-                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
+                    <img src="../photos/desserts.cookie.miche'ls.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">デザート</span>
                         <span class="en">DESSERTS</span>
@@ -420,7 +465,38 @@
         </div>
     </footer>
 
+
     <script src="../cart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("DOM loaded");
+            console.log("window.cart:", window.cart);
+            console.log("items:", window.cart.items);
+
+            const container = document.querySelector("#cartItemsContainer");
+            console.log("container:", container);
+
+            if(window.cart) {
+                window.cart.renderCartItems("#cartItemsContainer");
+                console.log("renderCartItems called");
+            }
+
+            const checkoutBtn = document.getElementById("checkoutBtn");
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener("click", () => {
+                    if(window.cart.isEmpty()) {
+                        alert("カートが空です");
+                        return;
+                    };
+
+                    window.location.herf = "../success.html";
+                });
+            };
+
+            const getTotal = document.getElementById            
+        });
+        
+    </script>
     <script src="../script.js"></script>
 </body>
 </html>

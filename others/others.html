@@ -10,7 +10,13 @@
     <header>
         <div class="header-title">
             <div class="title-icon">
-                <a href=""><img src="../photos/smeag-logo-horaizon.png" alt=""></a>
+                <a href="" class="smeag-official-icon"><img src="../photos/smeag-logo-horaizon.png" alt=""></a>
+                <a href="../cart/cart.html">
+                    <span class="cart-icon">
+                        <img src="../photos/cart.img.jpg" alt="">
+                        <span class="cart-badge">0</span>
+                    </span>
+                </a>
             </div>
         </div>
 
@@ -34,7 +40,7 @@
                             <span>&gt;</span>
                         </div>
                     </a></li>
-                    <li><a href="../hotcoffee/hotcoffee.html">
+                    <li class="current-link"><a href="../hotcoffee/hotcoffee.html">
                         <div class="menu-text">
                             <span class="jp">ホットコーヒー</span>
                             <span class="en">HOT COFFEE</span>
@@ -79,7 +85,7 @@
                             <span>&gt;</span>
                         </div>
                     </a></li>
-                    <li class="current-link"><a href="../others/others.html">
+                    <li><a href="../others/others.html">
                         <div class="menu-text">
                             <span class="jp">その他</span>
                             <span class="en">OTHERS</span>
@@ -99,15 +105,26 @@
 
         <div class="submenuNav-before"></div>
         <div class="submenu-nav">
-            <ul>
-                <li class="home-link"><a href="../index.html">ホーム</a></li>
-                <li><a href="../hotcoffee/hotcoffee.html">ホットコーヒー</a></li>
-                <li><a href="../icecoffee/icecoffee.html">アイスコーヒー</a></li>
-                <li><a href="../tea/tea.html">ティー</a></li>
-                <li><a href="../juice/juice.html">ジュース</a></li>
-                <li><a href="../desserts/desserts.html">デザート</a></li>
-                <li class="current-link"><a href="../others/others.html" class="current">その他</a></li>
-            </ul>
+            <div class="submenu-links">
+                <ul>
+                    <li class="parent-link home-link"><a href="../index.html">ホーム</a></li>
+                    <li class="parent-link cart-link">
+                        <a href="../cart/cart.html">
+                            <span>カート</span>
+                            <p class="parent-link cart-count-text">0</p>
+                        </a>
+                    </li>
+                    <li><a href="../hotcoffee/hotcoffee.html">ホットコーヒー</a></li>
+                    <li><a href="../icecoffee/icecoffee.html" >アイスコーヒー</a></li>
+                    <li><a href="../tea/tea.html">ティー</a></li>
+                    <li><a href="../juice/juice.html">ジュース</a></li>
+                    <li><a href="../desserts/desserts.html">デザート</a></li>
+                    <li class="parent-link current-link"><a href="../others/others.html" class="current">その他</a></li>
+                </ul>
+            </div>
+            <div class="submenu-links cart">
+                
+            </div>
         </div>
         <div class="submenuNav-after"></div>
 
@@ -196,6 +213,15 @@
                 </a>
             </section>
             <div class="drinks-menu-2-after"></div>
+
+            <div class="sub-menu-cart-modal" id="submenuModal">
+            <div class="modal-content">
+                <button class="close-btn" id="closeBtn">&times;</button>
+                <p class="content" id="modalName"></p>
+                <p class="content" id="modalPrice"></p>
+                <button class="add-to-button" id="addToCartBtn">カートに追加</button>
+            </div>
+        </div>
         </div>
     </main>
 
@@ -203,7 +229,7 @@
         <div class="menu-footer">
             <section class="footer-menu-icons">
                 <a href="../hotcoffee/hotcoffee.html">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
                     <div class="icon-text">  
                         <span class="jp">ホットコーヒー</span>
                         <span class="en">HOT COFFEE</span>
@@ -217,28 +243,28 @@
                     </div>
                 </a> 
                 <a href="../tea/tea.html">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/icedrinks.greenappletea.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">ティー</span>
                         <span class="en">HOT TEA</span>
                     </div>
                 </a> 
                 <a href="../juice/juice.html">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/icedrinks.bananashake.jpg" alt="">
                     <div class="icon-text">
                         <span class="jp">ジュース</span>
                         <span class="en">JUICE</span>
                     </div>
                 </a> 
                 <a href="../desserts/desserts.html">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/desserts.cookie.miche'ls.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">デザート</span>
                         <span class="en">DESSERTS</span>
                     </div>
                 </a> 
                 <a href="../others/others.html" class="current-link">
-                    <img src="../photos/hotdrinks.cafelatte.jpg" alt="">
+                    <img src="../photos/hotdrinks.cafeamericano.jpg" alt="">
                     <div class="icon-text">    
                         <span class="jp">その他</span>
                         <span class="en">OTHERS</span>

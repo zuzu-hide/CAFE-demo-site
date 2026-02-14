@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>決済キャンセル - SMEAG CAFE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cancel-page {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .cancel-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        .cancel-title {
+            font-size: 32px;
+            color: rgb(62, 48, 5);
+            margin-bottom: 15px;
+        }
+        .cancel-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .cancel-btn {
+            display: inline-block;
+            background-color: rgb(62, 48, 5);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .cancel-btn:hover {
+            background-color: rgb(143, 113, 56);
+        }
+        .cancel-btn.secondary {
+            background-color: transparent;
+            border: 2px solid rgb(62, 48, 5);
+            color: rgb(62, 48, 5);
+        }
+        .cancel-btn.secondary:hover {
+            background-color: rgb(250, 244, 236);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">
+            <div class="title-icon">
+                <a href="index.html"><img src="photos/smeag-logo-horaizon.png" alt=""></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="cancel-page">
+        <div class="cancel-icon">❌</div>
+        <h1 class="cancel-title">決済がキャンセルされました</h1>
+        <p class="cancel-message">
+            決済を中断しました。<br>
+            カート内の商品は保持されています。
+        </p>
+        <div>
+            <a href="cart/cart.html" class="cancel-btn">カートに戻る</a>
+            <a href="index.html" class="cancel-btn secondary">メニューに戻る</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-navMain-after"></div>
+        <div class="nav">
+            <ol class="icons">
+                <li class="icon smeag-icon"><a href="https://smeag.jp/"><img src="photos/SMEAG.icon.png" alt="smeagoffcial"></a></li>
+                <li class="icon instagram-icon"><a href="https://www.instagram.com/smeag_global_education"><img src="photos/Instagram.icon.mono.png" alt="instagram"></a></li>
+                <li class="icon twitter-icon"><a href=""><img src="photos/x.icon.mono.png" alt=""></a></li>
+                <li class="icon youtube-icon"><a href="https://www.youtube.com/@SMEAGGlobalEducation/videos"><img src="photos/youtube.icon.mono.png" alt=""></a></li>
+            </ol>
+        </div>
+    </footer>
+</body>
+</html>
