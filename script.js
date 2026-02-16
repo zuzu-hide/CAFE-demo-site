@@ -50,6 +50,7 @@ function closeMenu() {
     hbgMenu.classList.remove('active');
     hbgContents.classList.remove('open');
     hbgDisplay.classList.remove(`open`);
+    checkModal.classList.remove("open");
 }
 if (hbgMenu) {
     hbgMenu.addEventListener('click', () => {

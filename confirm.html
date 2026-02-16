@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注文確認画面</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: rgb(0, 0, 0, 0.1);
+        }
+        .confirm-page {
+            position: fixed;
+            inset: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            height: 85svh;
+            border-radius: 15px;
+            background-color: white;
+        }
+        .confirm-page h1 {
+            text-align: center;
+            padding: 20px 0;
+            color: white;
+
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-color: rgb(62, 48, 5);
+        }
+
+        .cart-info-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .cart-info-header img {
+            width: 40px;
+        }
+        .cart-info-content {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 10px 20px 0 20px;
+            padding: 20px;
+            border: solid 2px rgb(160, 133, 84);
+            border-radius: 15px;
+        } 
+
+        .user-info-header {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .user-info-content {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 10px 20px 0 20px;
+            padding: 20px;
+            border: solid 2px rgb(160, 133, 84);
+            border-radius: 15px;
+        }
+        .user-info-content p {
+            margin-top: 10px;
+        }
+
+        .confirm-page .buttons {
+            display: flex;
+            justify-content: center;
+            
+        }
+        .confirm-page button {
+            cursor: pointer;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 20px;
+        }
+        .final-orderBtn {
+            flex: 1;
+            padding: 20px;
+            background: rgb(62, 48, 5);
+            color: white;
+            border: none;
+        }
+        .final-orderBtn:hover {
+            background-color: rgb(143, 113, 56);
+        }
+        .back-btn {
+            flex: 2;
+            padding: 10px;
+            background: rgb(218, 208, 189);
+            color: rgb(0, 0, 0);
+            border: solid 1px rgb(239, 223, 195);
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <main class="confirm-page">
+        <h1>注文確認</h1>
+
+        <section class="cart-info">
+            <div class="cart-info-header">
+                <img src="photos/cart.img.jpg" alt="cart.img">
+                <h2>カート内容</h2>
+            </div>
+            <div class="cart-info-content">
+                <div id="confirmCartItem"></div>
+                <p>合計: <span id="confirmTotal"></span></p>
+            </div>
+        </section>
+
+        <section class="user-info">
+            <div class="user-info-header">
+                <h2>お客様情報</h2>
+            </div>
+            <div class="user-info-content">
+                <p>名前: <span id="confirmName"></span></p>
+                <p>部屋番号: <span id="confirmRoom"></span></p>
+                <p>コメント: <span id="confirmComment"></span></p>
+            </div>
+        </section>
+
+        <div class="buttons">
+            <button class="back-btn" id="backBtn">戻る</button>
+            <button class="final-orderBtn" id="finalizeOrderBtn">注文を確定する</button>
+        </div>
+    </main>
+
+    <script src="cart.js" defer></script>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", () => {
+            const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+            document.getElementById("confirmName").textContent = userInfo.name || "";
+            document.getElementById("confirmRoom").textContent = userInfo.room || "";
+            document.getElementById("confirmComment").textContent = userInfo.comment || "";
+
+            cart.renderCartItems("#confirmCartItem");
+           
+            document.getElementById("finalizeOrderBtn").addEventListener("click", () => {
+                alert("注文完了！ありがとうございます");
+
+                cart.clear();
+                localStorage.removeItem("cart");
+                localStorage.removeItem("userInfo");
+                
+                location.href = "../index.html";
+            });
+
+            document.getElementById("backBtn").addEventListener("click", () => {
+                history.back();
+            })
+        });
+    </script>
+</body>
+</html>

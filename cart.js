@@ -68,6 +68,18 @@ class ShoppingCart {
         });
     }
 
+    //カート内のすべての商品の合計金額
+    updateCartSummary() {
+        const subtotalEl = document.getElementById("cart-subtotal");
+        const totalEl = document.getElementById("cart-total");
+
+        if (!subtotalEl || !totalEl) return;
+
+        const total = this.getTotal();
+        subtotalEl.textContent = `₱${total}`;
+        totalEl.textContent = `₱${total}`;
+    };
+
     // 通知を表示
     showNotification(message) {
         const notification = document.createElement('div');
@@ -180,18 +192,6 @@ class ShoppingCart {
 
             this.updateCartSummary();
     }
-
-    updateCartSummary() {
-        const subtotalEl = document.getElementById("cart-subtotal");
-        const totalEl = document.getElementById("cart-total");
-
-        if (!subtotalEl || !totalEl) return;
-
-        const total = this.getTotal();
-        subtotalEl.textContent = `₱${total}`;
-        totalEl.textContent = `₱${total}`;
-    };
-
 }
 const cart = new ShoppingCart();
 window.cart = cart;
