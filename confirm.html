@@ -18,8 +18,11 @@
             height: 85svh;
             border-radius: 15px;
             background-color: white;
+            overflow-y: auto;
+            scrollbar-width: 1px;
         }
         .confirm-page h1 {
+            width: 100%;
             text-align: center;
             padding: 20px 0;
             color: white;
@@ -27,6 +30,117 @@
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
             background-color: rgb(62, 48, 5);
+        }
+
+        .cart-items-container {
+            margin-bottom: 30px;
+        }
+        .cart-item {
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr;
+            gap: 20px;
+            align-items: center;
+            padding: 20px;
+            border: 1.5px solid #e0e0e0;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background-color: white;
+            transition: box-shadow 0.3s ease;
+        }
+        .cart-item:hover {
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+        }
+        .item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .item-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            color: rgb(62, 48, 5);
+        }
+        .item-name-en {
+            display: none;
+        }
+        .item-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin: 5px 0 0 0;
+        }
+
+        .item-controls {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .qty-btn {
+            display: none;
+        }
+        .quantity-input {
+            width: 30px;
+            height: 32px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .quantity-input:focus {
+            outline: none;
+            border-color: rgb(160, 133, 84);
+        }
+        .btn-remove {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-remove:hover {
+            background-color: #c82333;
+        }
+        .item-subtotal {
+            font-weight: bold;
+            font-size: 20px;
+            text-align: right;
+            color: rgb(160, 133, 84);
+        }
+
+        @media (max-width: 768px) {
+            .cart-item {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .item-controls {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .item-subtotal {
+                text-align: center;
+                font-size: 22px;
+            }
+
+            .cart-container h1 {
+                font-size: 24px;
+            }
         }
 
         .cart-info-header {
@@ -82,6 +196,7 @@
             background: rgb(62, 48, 5);
             color: white;
             border: none;
+            transition: all 0.3s ease;
         }
         .final-orderBtn:hover {
             background-color: rgb(143, 113, 56);
@@ -89,10 +204,15 @@
         .back-btn {
             flex: 2;
             padding: 10px;
-            background: rgb(218, 208, 189);
-            color: rgb(0, 0, 0);
-            border: solid 1px rgb(239, 223, 195);
+            border: 2px solid #ddd;
+            background: white;
+            color: #666;
             font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background: #f5f5f5;
+            border-color: #999;
         }
     </style>
 </head>
@@ -100,14 +220,32 @@
     <main class="confirm-page">
         <h1>注文確認</h1>
 
+        </div>
         <section class="cart-info">
             <div class="cart-info-header">
                 <img src="photos/cart.img.jpg" alt="cart.img">
                 <h2>カート内容</h2>
             </div>
             <div class="cart-info-content">
-                <div id="confirmCartItem"></div>
-                <p>合計: <span id="confirmTotal"></span></p>
+                <div id="confirmCartItem">
+                    <div class="cart-page">
+                        <div class="cart-container">
+                            <div class="cart-empty" id="cartEmpty"></div>
+                            <div class="cart-items-container" id="cartItemsContainer"></div>
+
+                            <div class="cart-summary" id="cartSummary">
+                                <div class="summary-row">
+                                    <span class="summary-label">小計:</span>
+                                    <span id="cart-subtotal" class="summary-value">₱0</span>
+                                </div>
+                                <div class="summary-row total-row">
+                                    <span class="summary-label">合計:</span>
+                                    <span id="cart-total" class="summary-value total-price">₱0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -128,18 +266,78 @@
         </div>
     </main>
 
+    <div class="loading-screen" id="loadingScreen">
+        <div class="spinner"></div>
+    </div>
+    <div class="hidden" id="hiddenContent"></div>
+
     <script src="cart.js" defer></script>
     <script defer>
         document.addEventListener("DOMContentLoaded", () => {
             const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
-            document.getElementById("confirmName").textContent = userInfo.name || "";
-            document.getElementById("confirmRoom").textContent = userInfo.room || "";
-            document.getElementById("confirmComment").textContent = userInfo.comment || "";
+            const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+            document.getElementById("confirmName").textContent = userInfo.username || userInfo.name || "";
+            document.getElementById("confirmRoom").textContent = userInfo.roomNumber || userInfo.room || "";
+            document.getElementById("confirmComment").textContent = userInfo.comments || userInfo.comment || "なし";
 
             cart.renderCartItems("#confirmCartItem");
            
-            document.getElementById("finalizeOrderBtn").addEventListener("click", () => {
-                alert("注文完了！ありがとうございます");
+            document.getElementById("finalizeOrderBtn").addEventListener("click", async function() {
+                this.disabled = true;
+                this.textContent = "送信中...";
+
+                let totalPrice = 0;
+                cartData.forEach(item => {
+                    totalPrice += item.price * (item.qty || item.quantity || 1);
+                });
+                
+                const completeOrder = {
+                    userInfo: userInfo,
+                    orderData: {
+                        items: cartData,
+                        totalPrice: totalPrice,
+                    },
+                    orderTime: new Date().toISOString(),
+                    orderId: 'ORD-' + Date.now()
+                }
+
+
+                //python APIに送信
+                try {
+                    const response = await fetch('http://localhost:5000/api/orders', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(completeOrder)
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        localStorage.setItem('completeOrder', JSON.stringify(completeOrder));
+
+                        if (window.cart) {
+                            cart.clear();
+                        }
+                        localStorage.removeItem("cart");
+                        localStorage.removeItem("userInfo");
+                        localStorage.removeItem("cart");
+
+                        alert("注文完了！ありがとうございます");
+
+                        /*window.location.href = "success.html";*/                        
+                    } else {
+                        throw new Error(data.error || "注文の送信に失敗しました");
+                    }
+                } catch (error) {
+                    console.error('エラー:', error);
+                    alert('注文の送信に失敗しました。\nもう一度お試しください。\n\nエラー:' + error.meesage);
+
+                    this.disabled = false;
+                    this.textContent = "注文を確定する";
+                }
+                
 
                 cart.clear();
                 localStorage.removeItem("cart");
@@ -149,9 +347,10 @@
             });
 
             document.getElementById("backBtn").addEventListener("click", () => {
-                history.back();
+                location.href = "../cart/cart.html";
             })
         });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>

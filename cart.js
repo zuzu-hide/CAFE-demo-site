@@ -108,18 +108,6 @@ class ShoppingCart {
         return this.items.length === 0;
     }
 
-
-    //カート内のすべての商品の合計金額
-    updateCartSummary() {
-        const subtotalEl = document.getElementById("cart-subtotal");
-        const totalEl = document.getElementById("cart-total");
-
-        if (!subtotalEl || !totalEl) return;
-        const total = this.getTotal(); // カート内合計
-        subtotalEl.textContent = `₱${total}`;
-        totalEl.textContent = `₱${total}`;
-    }
-
     renderCartItems(containerSelector) {
         const emptyEl = document.getElementById("cartEmpty");
         const container = document.querySelector(containerSelector);
@@ -154,7 +142,7 @@ class ShoppingCart {
                         <div class="quantity-control">
                             <button class="qty-btn delete">削除</button>
                         </div>
-                        <span class="item-subtotal">₱${item.price * item.quantity}</span>
+                        <span class="item-subtotal">小計:₱${item.price * item.quantity}</span>
                     </div>
                 `;
                 container.appendChild(div);
