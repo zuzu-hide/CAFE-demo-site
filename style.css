@@ -20,7 +20,8 @@ body {
 
 /*header*/
 header {
-    z-index: var(--z-menu);
+    position: relative;
+    z-index: var(--z-header);
 }
 .title-icon {
     text-align: center;
@@ -294,11 +295,11 @@ header {
     background-color: rgba(0, 0, 0, 0.4);
     visibility: hidden;
     overflow: hidden;
-    z-index: var(--z-overlay);
 }
 .hbg-display.open {
     opacity: 1;
     visibility: visible;
+    z-index: var(--z-overlay);
 }
 
 
