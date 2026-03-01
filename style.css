@@ -275,15 +275,16 @@ header {
 @media (max-width: 522px) {
     /*title-icon img*/
     .title-icon {
-        width: 300px;
-        height: auto;
+        width: 100%;
+        height: 80px;
         margin: auto 0;
     }
 
     .title-icon .smeag-official-icon img {
         width: 100%;
-        height: auto;
-        margin: auto 0;
+        height: 50px;
+        justify-content: center;
+        margin: 5px 0 0 0 ;
     }
 }
 .hbg-display {
